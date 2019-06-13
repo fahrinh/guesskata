@@ -1,20 +1,23 @@
 require 'tty-prompt'
 
+require 'player'
+
 class Game
 
   def play
     prompt = TTY::Prompt.new
 
     name = prompt.ask "What's your username?"
-    puts "Hello #{name}, let's play !"
+    player = Player.new(name)
 
-    score = 0
+    puts "Hello #{player.name}, let's play !"
+
     still_play = true
     list_word = ['book', 'bread', 'bike', 'car', 'house', 'table']
 
     while still_play
       if list_word.empty?
-        puts "Congratulation #{name}! You've solved all words with score: #{score}"
+        puts "Congratulation #{player.name}! You've solved all words with score: #{player.score}"
         break
       end
 
@@ -26,10 +29,10 @@ class Game
         # q.messages[:validate?] =
       end
 
-      score += 1
+      player.inc_score
       list_word = list_word - [word]
 
-      puts "RIGHT. Your score: #{score}"
+      puts "RIGHT. Your score: #{player.score}"
     end
 
   end
