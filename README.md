@@ -11,4 +11,7 @@ How to Play
     `./bin/guesskata.sh`
 - Docker
     
-    `docker run --rm -it --name guess-kata-app fahrinh/guesskata:latest`
+    ```
+    docker pull fahrinh/guesskata
+    docker run --rm -it --name guess-kata-app fahrinh/guesskata:latest
+    ```
