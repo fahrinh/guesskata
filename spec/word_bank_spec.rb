@@ -58,4 +58,18 @@ describe WordBank do
     end
   end
 
+  describe '.obfuscate' do
+
+    context 'given a word' do
+      it 'returns a not same with original word' do
+        ori_w = 'food'
+        obs_w = WordBank.obfuscate(ori_w)
+
+        expect(obs_w).to_not eq(ori_w)
+      end
+    end
+
+
+  end
+
 end
