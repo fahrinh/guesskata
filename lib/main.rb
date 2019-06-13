@@ -1,5 +1,8 @@
+require 'game'
+
 class Main
   def run
-    puts "Hello world"
+    game = Game.new
+    game.play
   end
 end
