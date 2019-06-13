@@ -12,7 +12,7 @@ class Game
   end
 
   def play
-    prompt = TTY::Prompt.new({stdin: @stdin, stdout: @stdout})
+    prompt = TTY::Prompt.new(stdin: @stdin, stdout: @stdout, interrupt: :exit)
 
     name = prompt.ask("What's your username?", required: true)
     player = Player.new(name)
