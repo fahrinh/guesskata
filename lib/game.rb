@@ -9,7 +9,7 @@ class Game
   def play
     prompt = TTY::Prompt.new
 
-    name = prompt.ask "What's your username?"
+    name = prompt.ask("What's your username?", required: true)
     player = Player.new(name)
 
     puts "Hello #{player.name}, let's play !"
