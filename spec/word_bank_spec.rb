@@ -16,6 +16,29 @@ describe WordBank do
     word_bank
   }
 
+  describe '#remove_word' do
+
+    context 'given a list of word' do
+      it 'returns a list of word with excluded word' do
+        w = 'food'
+        populated_word_bank.remove_word(w)
+        inst_list_word = populated_word_bank.instance_variable_get(:@list_word)
+
+        expect(inst_list_word).to_not include(w)
+      end
+    end
+
+    context 'given an empty list' do
+      it 'returns an empty list' do
+        w = 'food'
+        empty_word_bank.remove_word(w)
+        inst_list_word = empty_word_bank.instance_variable_get(:@list_word)
+
+        expect(inst_list_word.length).to eq(0)
+      end
+    end
+  end
+
   describe '#pick_word' do
 
     context 'given a list of word' do
