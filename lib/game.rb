@@ -12,10 +12,9 @@ class Game
 
     puts "Hello #{player.name}, let's play !"
 
-    still_play = true
     list_word = ['book', 'bread', 'bike', 'car', 'house', 'table']
 
-    while still_play
+    while true
       if list_word.empty?
         puts "Congratulation #{player.name}! You've solved all words with score: #{player.score}"
         break
