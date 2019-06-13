@@ -6,8 +6,13 @@ require 'level'
 
 class Game
 
+  def initialize(stdin, stdout)
+    @stdin = stdin
+    @stdout = stdout
+  end
+
   def play
-    prompt = TTY::Prompt.new
+    prompt = TTY::Prompt.new({stdin: @stdin, stdout: @stdout})
 
     name = prompt.ask("What's your username?", required: true)
     player = Player.new(name)
