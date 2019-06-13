@@ -22,7 +22,7 @@ class Game
       end
 
       word = pick_word(list_word)
-      obs_word = obsfucate(word)
+      obs_word = obfuscate(word)
 
       answer = prompt.ask("Guess this word: #{obs_word} >>> ") do |q|
         q.validate(/\A#{word}\z/i, "WRONG. Try again. Guess this word: #{obs_word}")
@@ -45,7 +45,15 @@ class Game
     end
   end
 
-  def obsfucate(word)
+  def obfuscate(word)
+    obs = shuffle(word)
+    while obs == word
+      obs = shuffle(word)
+    end
+    obs
+  end
+
+  def shuffle(word)
     word.split("").shuffle.join
   end
 end
