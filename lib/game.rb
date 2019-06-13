@@ -21,10 +21,10 @@ class Game
         break
       end
 
-      word = word_bank.pick_word()
+      word = word_bank.pick_word
       obs_word = WordBank.obfuscate(word)
 
-      answer = prompt.ask("Guess this word: #{obs_word} >>> ") do |q|
+      prompt.ask("Guess this word: #{obs_word} >>> ") do |q|
         q.validate(/\A#{word}\z/i, "WRONG. Try again. Guess this word: #{obs_word}")
         # q.messages[:validate?] =
       end
