@@ -5,14 +5,12 @@ describe WordBank do
   let(:empty_list_word) {%w()}
 
   let(:populated_word_bank) {
-    word_bank = WordBank.new
-    word_bank.instance_variable_set(:@list_word, populated_list_word)
+    word_bank = WordBank.new(populated_list_word)
     word_bank
   }
 
   let(:empty_word_bank) {
-    word_bank = WordBank.new
-    word_bank.instance_variable_set(:@list_word, empty_list_word)
+    word_bank = WordBank.new(empty_list_word)
     word_bank
   }
 
