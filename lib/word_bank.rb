@@ -4,7 +4,7 @@ class WordBank
   end
 
   def remove_word(word)
-    @list_word = @list_word - [word]
+    @list_word -= [word]
   end
 
   def empty?
