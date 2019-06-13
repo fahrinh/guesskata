@@ -2,6 +2,7 @@ require 'tty-prompt'
 
 require 'player'
 require 'word_bank'
+require 'level'
 
 class Game
 
@@ -13,27 +14,29 @@ class Game
 
     puts "Hello #{player.name}, let's play !"
 
-    word_bank = WordBank.new
+    Level.new.levels.each do |level, list_word|
+      word_bank = WordBank.new(list_word)
 
-    while true
-      if word_bank.empty?
-        puts "Congratulation #{player.name}! You've solved all words with score: #{player.score}"
-        break
+      while true
+        if word_bank.empty?
+          break
+        end
+
+        word = word_bank.pick_word
+        obs_word = WordBank.obfuscate(word)
+
+        prompt.ask("[#{level.capitalize}] Guess this word: #{obs_word} >>> ") do |q|
+          q.validate(/\A#{word}\z/i, "WRONG. Try again. Guess this word: #{obs_word}")
+        end
+
+        player.inc_score
+        word_bank.remove_word(word)
+
+        puts "RIGHT. Your score: #{player.score}"
       end
-
-      word = word_bank.pick_word
-      obs_word = WordBank.obfuscate(word)
-
-      prompt.ask("Guess this word: #{obs_word} >>> ") do |q|
-        q.validate(/\A#{word}\z/i, "WRONG. Try again. Guess this word: #{obs_word}")
-        # q.messages[:validate?] =
-      end
-
-      player.inc_score
-      word_bank.remove_word(word)
-
-      puts "RIGHT. Your score: #{player.score}"
     end
+
+    puts "Congratulation #{player.name}! You've solved all words with score: #{player.score}"
 
   end
 

@@ -1,6 +1,6 @@
 class WordBank
-  def initialize
-    @list_word = %w(book bread bike car house table)
+  def initialize(list_word)
+    @list_word = list_word
   end
 
   def remove_word(word)
