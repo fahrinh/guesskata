@@ -1,8 +1,9 @@
 kind: pipeline
-type: docker
+# type: docker
 steps:
 - name: test
   image: ruby
   commands:
+  - gem install bundler
   - bundle install
   - bundle exec rspec
